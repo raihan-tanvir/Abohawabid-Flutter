@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:abohawabid/utilities/constants.dart';
+import 'package:flutter/material.dart';
 
 class LocationScreen extends StatefulWidget {
+  LocationScreen({this.locationWeather});
+
+  final locationWeather;
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
