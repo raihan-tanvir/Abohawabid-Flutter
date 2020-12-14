@@ -1,4 +1,21 @@
+import 'package:abohawabid/utilities/constants.dart';
+
+import 'location.dart';
+import 'networking.dart';
+
 class WeatherModel {
+  Future<dynamic> getLocationWeather() async {
+    Location location = Location();
+    await location.getCurrentLocation();
+
+    NetworkHelper networkHelper = NetworkHelper(
+        url:
+            '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$kApiKey&units=metric');
+
+    var weatherData = await networkHelper.getWeatherData();
+    return weatherData;
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';
